@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { MeanStdComponent } from './mean-std/mean-std.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MeanStdComponent
   ],
   imports: [
     BrowserModule,
