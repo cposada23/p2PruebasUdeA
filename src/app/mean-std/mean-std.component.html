@@ -1,6 +1,25 @@
-
-<button *ngFor="let vec of vectores" (click)="seleccionarVector(vec)">arr</button>
-
-<h1>Vector {{vector | json}}</h1>
-
-
+<section>
+  <div id="array-buttons-area">
+    <button *ngFor="let vec of vectores; let i=index" (click)="seleccionarVector(vec)">Arreglo {{i + 1}}</button>
+  </div>
+  <div id="result-area">
+    <div id="array">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Arreglo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let num of vector.vector">
+            <td>{{num}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="calculations">
+      <p><strong>Media: </strong>{{vector.mean}}</p>
+      <p><strong>Desviación: </strong>{{vector.standarDeviation}}</p>
+    </div>
+  </div>
+</section>
