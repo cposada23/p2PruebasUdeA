@@ -25,7 +25,6 @@ export class Vector {
         return this.operation.standarDeviation(this._vector, this._mean);
     }
 
-    
 
     public setVector(vector:Array<number>){
         this._vector = vector;

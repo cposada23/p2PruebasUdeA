@@ -1,25 +1,47 @@
 <section>
+  <div id="array-buttons-area" *ngIf="!ingreso">
+    <button (click)="ingreso = true">Ingresar nuevo vector</button>
+  </div>
+
+
+  <div  *ngIf="ingreso">
+    
+    <div id="array-buttons-area" >
+      <input type="text" [(ngModel)]="numeros" placeholder="Ingrese los números separados por un espacio en blanco">
+    </div>
+    <div id="array-buttons-area">
+      <button (click)="ingresoDatos()">Ingresar Datos</button>
+    </div>
+    <div id="array-buttons-area" *ngIf="error">
+      <h1 style="color: red">{{mensaje}}</h1>
+    </div>
+  </div>
+  
+
+</section>
+
+<section>
   <div id="array-buttons-area">
-    <button *ngFor="let vec of vectores; let i=index" (click)="seleccionarVector(vec)">Arreglo {{i + 1}}</button>
+    <button *ngFor="let vec of vectores; let i=index" (click)="seleccionarVector(vec, i+1)">Arreglo {{i + 1}}</button>
   </div>
   <div id="result-area">
     <div id="array">
       <table class="custom-table">
         <thead>
           <tr>
-            <th>Arreglo</th>
+            <th>Arreglo {{num}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let num of vector.vector">
+          <tr *ngFor="let num of vector?.vector">
             <td>{{num}}</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div id="calculations">
-      <p><strong>Media: </strong>{{vector.mean}}</p>
-      <p><strong>Desviación: </strong>{{vector.standarDeviation}}</p>
+      <p><strong>Media: </strong>{{vector?.mean}}</p>
+      <p><strong>Desviación: </strong>{{vector?.standarDeviation}}</p>
     </div>
   </div>
 </section>

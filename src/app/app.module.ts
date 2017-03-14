@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MeanStdComponent } from './mean-std/mean-std.component';
 
+import { ServicioDatosService } from './services/servicio-datos.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,7 @@ import { MeanStdComponent } from './mean-std/mean-std.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ServicioDatosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
