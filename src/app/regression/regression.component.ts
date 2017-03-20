@@ -36,16 +36,15 @@ export class RegressionComponent implements OnInit {
   }
 
   seleccionar(index){
-    if(!this.seleccionados){
+    if(!this.seleccionados){ // Se selecciona el primer vector
       this.seleccionados = new Array<Vector>();
       this.seleccionados.push(this.vectores[index]);
       this.texto += this.vectores[index].nombre;
     }
-    else if (this.seleccionados.length == 1){
+    else if (this.seleccionados.length == 1){ // Se selecciona el segundo vector: se hace la regresion
       this.seleccionados.push(this.vectores[index]);
       this.texto += " y " + this.vectores[index].nombre;
       let res = this.seleccionados[0].regresion(this.seleccionados[1]);
-      console.log("res ", res);
       this.b0 = res[0];
       this.b1 = res[1];
       this.r  = res[2];
@@ -110,19 +109,6 @@ export class RegressionComponent implements OnInit {
 
     this.crearVectores(datos, titulos);
 
-    /*let vector1 = this.vectores[1];
-    let vector2 = this.vectores[2];
-    console.log("vector 1", vector1.vector);
-    console.log("vector 1 cuadrado", vector1.vectorAlCuadrado);
-    console.log("sum vector 1", vector1.sumaElementos);
-    console.log("sum vector 1 cuadrado", vector1.sumaElementosAlCuadrado);
-    console.log("   ");
-
-    console.log("vector 2", vector2.vector);
-    console.log("vector 2 cuadrado", vector2.vectorAlCuadrado);
-    console.log("sum vector 2", vector2.sumaElementos);
-    console.log("sum vector 2 cuadrado", vector2.sumaElementosAlCuadrado);
-    vector1.regresion(vector2);*/
 
   }
 
@@ -140,7 +126,6 @@ export class RegressionComponent implements OnInit {
         this.vectores.push(vector);
       }
     }
-    console.log("vectores creados");
      
   }
 
