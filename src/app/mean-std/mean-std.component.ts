@@ -17,7 +17,8 @@ export class MeanStdComponent implements OnInit {
   numeros:any;
   error:boolean = false;
   mensaje:string = '';
-  constructor(private datosService:ServicioDatosService){
+  file:File;
+  constructor(private datosService:ServicioDatosService) {
     
   }
 
@@ -25,18 +26,42 @@ export class MeanStdComponent implements OnInit {
     this.cargarVector();
   }
 
-  cargarVector(){
+  cargarVector() {
     let data = this.datosService.getDatos();
     this.data = this.datosService.getDatos();
     console.log("data", data);
 
-   for(let i in data){
+   for(let i in data) {
        let vec = new Vector();
        vec.setVector(data[i]);
        this.vectores.push(vec);
     }
     this.vector = this.vectores[0];
     this.num = 1;
+  }
+
+  fileChanged(event) {
+    console.log(event.srcElement.files);
+    this.file = event.srcElement.files[0];
+    console.log("this.file", this.file);
+    var lector: FileReader = new FileReader();
+    lector.readAsText(this.file);
+
+    lector.onloadend = (e) => {
+      console.log("hoglgahg");
+      console.log(lector.result);
+      var resultado = lector.result;
+      var vect = resultado.split('\n');
+      console.log("vector ", vect);
+    }
+
+    /*this.nombreArchivo = this.file.name;
+    if(this.file.size>this.maxSize){
+      console.log("el archivo exede el tamaño maximo de 5 Megabytes");
+      this.showPrompt('El archivo seleccionado excede el tamaño máximo de 5 Megabytes', 0);
+      this.file = null;
+      this.nombreArchivo = "";
+    }*/
   }
 
   seleccionarVector(vector, i ){

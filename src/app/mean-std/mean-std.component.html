@@ -21,6 +21,15 @@
 </section>
 
 <section>
+
+  <div class="file-input-wrapper">
+    <button  ion-button round full>Seleccionar Archivo</button>
+    <input type="file" name="file"   (change) ="fileChanged($event)" />
+  </div>
+</section>
+
+
+<section>
   <div id="array-buttons-area">
     <button *ngFor="let vec of vectores; let i=index" (click)="seleccionarVector(vec, i+1)">Arreglo {{i + 1}}</button>
   </div>

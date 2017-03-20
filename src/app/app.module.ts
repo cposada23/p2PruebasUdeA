@@ -6,12 +6,16 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MeanStdComponent } from './mean-std/mean-std.component';
 
+
+
 import { ServicioDatosService } from './services/servicio-datos.service';
+import { RegressionComponent } from './regression/regression.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MeanStdComponent
+    MeanStdComponent,
+    RegressionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,83 @@
+<section>
+  <div class="file-input-wrapper">
+    <button  ion-button round full>Seleccionar Archivo</button>
+    <input type="file" name="file"  accept="text/plain"  (change) ="fileChanged($event)" />
+  </div>
+</section>
+<section *ngIf="error">
+  <div>
+    <h2>{{error}}</h2>
+  </div>
+</section>
+<section>
+  <div id="array-buttons-area" *ngIf="vectores && !select">
+    <button (click)="seleccion()">Seleccionar vectores</button>
+  </div>
+  <div id="array-buttons-area" *ngIf="vectores && select">
+    <button (click)="reset()">Reset</button>
+  </div>
+  <div>
+    <h3>{{texto}}</h3>
+  </div>
+</section>
+
+
+<section *ngIf="resultado">
+  <div id="result-area">
+    <div id="array">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th >
+              variable  
+            </th>
+            <th >
+              resultado
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>B0</td>
+            <td>{{b0}}</td>
+          </tr>
+          <tr>
+            <td>B1</td>
+            <td>{{b1}}</td>
+          </tr>
+          <tr>
+            <td>r</td>
+            <td>{{r}}</td>
+          </tr>
+          <tr>
+            <td>r^2</td>
+            <td>{{r2}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div id="result-area">
+    <div id="array">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th *ngFor=" let vector of vectores; let i = index ">
+              <button (click)="seleccionar(i)" [disabled] = "!select">{{vector.nombre}}</button>    
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <td *ngFor=" let vector of vectores">
+            <tr *ngFor = "let numero of vector.vector "> {{numero}}</tr>
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
