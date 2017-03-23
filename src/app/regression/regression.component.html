@@ -6,7 +6,7 @@
 </section>
 <section *ngIf="error">
   <div>
-    <h2>{{error}}</h2>
+    <h2 style="color: red">{{error}}</h2>
   </div>
 </section>
 <section>
@@ -53,10 +53,26 @@
             <td>r^2</td>
             <td>{{r2}}</td>
           </tr>
+          <tr *ngIf="yk">
+            <td>yk</td>
+            <td>{{yk}}</td>
+          </tr>
 
         </tbody>
       </table>
     </div>
+  </div>
+</section>
+
+<section *ngIf="resultado">
+  <div>
+    <h1>Calcular estimado Yk = B0 + B1 * Xk</h1>
+  </div>
+  <div>
+    <input type="text" [(ngModel)] = "xi" />
+  </div>
+  <div id="array-buttons-area" *ngIf="vectores && select">
+    <button (click)="calcularYk()" [disabled] = "!xi">Calcular</button>
   </div>
 </section>
 

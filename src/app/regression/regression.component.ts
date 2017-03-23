@@ -18,12 +18,16 @@ export class RegressionComponent implements OnInit {
   resultado = false;
   seleccionados:Array<Vector>;
   texto = 'Seleccionados: ';
+  funcion:string;
   b0:number;
   b1:number;
   r:number;
   r2:number;
+  yk:number;
+  xi:number;
   constructor() { 
     this.textoBoton = "Seleccionar arreglos";
+    this.funcion="this.b0 + this.b1*this.xi";
   }
 
   ngOnInit() {
@@ -53,10 +57,20 @@ export class RegressionComponent implements OnInit {
     }
   }
 
+  calcularYk(){
+    console.log(eval(this.funcion));
+    this.yk = eval(this.funcion);
+    if(!this.yk){
+      this.error = "Ingrese solo valores numéricos";
+    }
+  }
+
   reset(){
     this.texto = "Seleccionados: "
     this.seleccionados = null;
     this.resultado = false;
+    this.yk = null;
+    this.xi = null;
   }
 
   /**
